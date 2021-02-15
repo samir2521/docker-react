@@ -1,0 +1,20 @@
+FROM node:alpine
+
+WORKDIR /app
+
+COPY ./package.json ./
+
+#RUN npm -g config set user root
+RUN npm install
+
+RUN chmod -R 777 /app/node_modules
+
+COPY ./ ./
+
+#RUN chmod -R 777 /app/node_modules
+
+
+#CMD ["sh"]
+
+CMD ["sh","-c","chmod -R 777 /app/node_modules/ && npm run test"]
+#CMD ["npm","run","start"]
